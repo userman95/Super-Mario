@@ -8,6 +8,7 @@ var main = {
         this.load.spritesheet('mario','assets/Mario.png',16,16); // mario spritesheet
 			  this.load.image('mush','assets/mush.png',16,16); // mushroom image
         this.load.audio('jump', 'audio/jump.wav');//Jump sound
+	    this.load.audio('kling','audio/coin.wav'); // Coin sound
       
      }
     		function create() {
