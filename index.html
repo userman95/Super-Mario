@@ -38,7 +38,7 @@ body {
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 
-			this.load.tilemap('level', 'assets/supermariomap.json', null,
+			this.load.tilemap('supermariomap', 'assets/supermariomap.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
 
@@ -51,7 +51,7 @@ body {
 
 			game.stage.backgroundColor = '#5c94fc';
 
-			map = game.add.tilemap('level');
+			map = game.add.tilemap('supermariomap');
 			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
