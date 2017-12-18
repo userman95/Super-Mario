@@ -86,7 +86,7 @@ body {
 		}
 
 		function update() {
-			game.physics.arcade.collide(player, layer);
+			game.physics.arcade.collide(mario, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
