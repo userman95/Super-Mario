@@ -32,7 +32,7 @@ body {
 			this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 
-			this.load.spritesheet('tiles', 'assets/mariotileset.png', 16,
+			this.load.spritesheet('tiles', 'assets/set01.tsx', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
@@ -52,7 +52,7 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 
 			map = game.add.tilemap('level');
-			map.addTilesetImage('tiles', 'tiles');
+			map.addTilesetImage('set01', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
