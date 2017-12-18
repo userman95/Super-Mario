@@ -32,13 +32,13 @@ body {
 			this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 
-			this.load.spritesheet('tiles', 'assets/mariotileset', 16,
+			this.load.spritesheet('tiles', 'assets/mariotileset.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 
-			this.load.tilemap('level', 'assets/SuperMarioMap.json', null,
+			this.load.tilemap('level', 'assets/supermariomap.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
 
