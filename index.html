@@ -65,6 +65,7 @@ body {
 			goombas = game.add.group();
 			goombas.enableBody = true;
 			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
+			
 			goombas.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
 					2, true);
 			goombas.callAll('animations.play', 'animations', 'walk');
@@ -86,7 +87,7 @@ body {
 		}
 
 		function update() {
-			game.physics.arcade.collide(mario, layer);
+			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
@@ -125,6 +126,8 @@ body {
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			var audio = new Audio('audio/coin.wav');
+ -                        audio.play();
 		}
 
 		function goombaOverlap(player, goomba) {
