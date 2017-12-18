@@ -1,11 +1,11 @@
 
 var main = {
     preload : function () {
-        this.load.tilemap('level','extensions/Π2013139.json', null,Phaser.Tilemap.TILED_JSON); // my map
-   	this.load.spritesheet('tiles', 'assets/Super Mario Bros - Tile Set (1).png', 16,16); //tiles 
+        this.load.tilemap('level','extensions/SuperMarioMap.json', null,Phaser.Tilemap.TILED_JSON); // my map
+   	this.load.spritesheet('tiles', 'assets/MarioTileSet.png', 16,16); //tiles 
         this.load.spritesheet('goomba','assets/goomba.png',16,16); // goomba spritesheet
         this.load.spritesheet('coin','assets/Coin1.png',16,16); // coin spritesheet
-        this.load.spritesheet('mario','assets/Mario.png',16,16); // mario spritesheet
+        this.load.spritesheet('mario','assets/mario.png',16,16); // mario spritesheet
         this.load.image('mush','assets/mush.png',16,16); // mushroom image
         this.load.audio('jump', 'audio/jump.wav');//Jump sound
 	this.load.audio('kling','audio/coin.wav'); // Coin sound
