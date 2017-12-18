@@ -19,26 +19,21 @@ body {
 			create : create,
 			update : update
 		}, false, false);
-		var score=0;
-		var scoreText;
-		var life = 3;
-                var lifeText;
-                var gameoverText;
-		
+
 		function preload() {
 
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
-			this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
+			this.load.baseURL = 'https://ioniodi.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 
-			this.load.spritesheet('tiles', 'assets/mariotileset.png', 16,
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 
-			this.load.tilemap('level', 'assets/supermariomap.json', null,
+			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
 
@@ -52,7 +47,7 @@ body {
 			game.stage.backgroundColor = '#5c94fc';
 
 			map = game.add.tilemap('level');
-			map.addTilesetImage('set01', 'tiles');
+			map.addTilesetImage('tiles', 'tiles');
 			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
@@ -142,18 +137,10 @@ body {
 					goomba.kill();
 				});
 			} else {
-				life--;
-                                lifeText.text = 'life: ' +life;
-				player.x=player.x-30;
-			       var snd =game.add.audio("stomp");
-				snd.play();}
-				if(life==0){
-					player.frame = 6;
-					player.body.enable = false;
-					player.animations.stop();
-					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					gameoverText = game.add.text(20, 100, 'GAME OVER', { fontSize: '32px', fill: '#FF0000' });
-			        	gameoverText.fixedToCamera = true;			     
+				player.frame = 6;
+				player.body.enable = false;
+				player.animations.stop();
+				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true;
 				});
 			}
