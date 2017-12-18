@@ -19,11 +19,17 @@ body {
 	<script type="text/javascript">
 		var game = new Phaser.Game(1030, 480, Phaser.CANVAS, '', this, false, false);
 	       
+		function preload() {
+			//this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
+			//this.load.crossOrigin = 'anonymous';
+		}
 		game.state.add('main', main);
 		game.state.add('menu', menu);
 		game.state.start('menu');
 		
 		var score = 0;
+		var endtext;
+		var text;
 		function coinOverlap(player, coin) {
 			kling = game.add.audio('kling');
 			coin.kill();
@@ -41,7 +47,9 @@ body {
 			text.fixedToCamera=true;
 			player.body.enable = false;
 			player.animations.stop();
+			
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				
 			game.stage.backgroundColor = '#000000';	
 			score = 0;
 			game.state.start('menu');
@@ -72,7 +80,7 @@ body {
 			}
 		}
 			
-		function mush2collide(player, mush2){
+		/*function mush2collide(player, mush2){
 			if (player.body.touching.up){
 				mush2.body.enable = false;
 				end();
@@ -86,18 +94,18 @@ body {
 			}else
 				mush2.body.enable = false;
 				end();
-		}
+		}*/
 		function die(){
 		//	dies = game.add.audio('dies');
-			lives--;
+			//lives--;
 			score = 0;
-			back.stop();
-			dies.play();
+			//back.stop();
+			//dies.play();
 			game.state.start(game.state.current);
 		}
 			function dying(){
 		
-			game_over = game.add.audio('game_over');
+			//game_over = game.add.audio('game_over');
 			var style2 = { font: "bold 50px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
 			game_overtext = game.add.text(280, 150, "GAME OVER", style2);
 			var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
@@ -106,7 +114,7 @@ body {
 			game_overtext.fixedToCamera=true; 
 			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 			game.stopped = true;
-			back.stop();
+			//back.stop();
 			game.stage.backgroundColor = '#000000';
 			score = 0;
 			game.state.start('menu');
