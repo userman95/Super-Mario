@@ -19,7 +19,12 @@ body {
 			create : create,
 			update : update
 		}, false, false);
-
+		var score=0;
+		var scoreText;
+		var life = 3;
+                var lifeText;
+                var gameoverText;
+		
 		function preload() {
 
 			//  We need this because the assets are on github pages
@@ -27,7 +32,7 @@ body {
 			this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
 			this.load.crossOrigin = 'anonymous';
 
-			this.load.spritesheet('tiles', 'assets/Super Mario Bros - Tile Set (1).png', 16,
+			this.load.spritesheet('tiles', 'assets/MarioTileSet.png', 16,
 					16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
@@ -137,10 +142,18 @@ body {
 					goomba.kill();
 				});
 			} else {
-				player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+				life--;
+                                lifeText.text = 'life: ' +life;
+				player.x=player.x-30;
+			       var snd =game.add.audio("stomp");
+				snd.play();}
+				if(life==0){
+					player.frame = 6;
+					player.body.enable = false;
+					player.animations.stop();
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					gameoverText = game.add.text(20, 100, 'GAME OVER', { fontSize: '32px', fill: '#FF0000' });
+			        	gameoverText.fixedToCamera = true;			     
 					game.paused = true;
 				});
 			}
