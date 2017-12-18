@@ -10,52 +10,149 @@ body {
 	background-color: #000;
 }
 </style>
-	
-<script src="menu.js"></script>
-<script src="main.js"></script>
 <script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 </head>
 <body>
+	
+	<audio autoplay loop>
+        <source src="audio/gamesound.mp3.crdownload" type="audio/mpeg">
+        
+    	</audio>  
+	
 	<script type="text/javascript">
-		var game = new Phaser.Game(1030, 480, Phaser.CANVAS, '', this, false, false);
-	       
+		var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
+			preload : preload,
+			create : create,
+			update : update
+		}, false, false);
+		
+		var score=0;
+		var scoreText;
+		var life = 3;
+                var lifeText;
+                var gameoverText;
+
 		function preload() {
-			//this.load.baseURL = 'https://userman95.github.io/Super-Mario/';
-			//this.load.crossOrigin = 'anonymous';
+
+			//  We need this because the assets are on github pages
+			//  Remove the next 2 lines if running locally
+			this.load.baseURL = 'https://p13kara33.github.io/Super-Mario/';
+			this.load.crossOrigin = 'anonymous';
+
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
+					16);
+			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
+			this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
+			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
+
+			this.load.tilemap('level', 'assets/super_mario_map_changed.json', null,
+					Phaser.Tilemap.TILED_JSON);
 		}
-		game.state.add('main', main);
-		game.state.add('menu', menu);
-		game.state.start('menu');
 		
-		var score = 0;
-		var endtext;
-		var text;
+		
+
+		function create() {
+			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
+			game.scale.pageAlignHorizontally = true;
+			game.scale.pageAlignVertically = true
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			game.physics.startSystem(Phaser.Physics.ARCADE);
+
+			game.stage.backgroundColor = '#5c94fc';
+
+			map = game.add.tilemap('level');
+			map.addTilesetImage('tiles', 'tiles');
+			map.setCollisionBetween(3, 12, true, 'solid');
+
+			map.createLayer('background');
+
+			layer = map.createLayer('solid');
+			layer.resizeWorld();
+
+			coins = game.add.group();
+			coins.enableBody = true;
+			map.createFromTiles(2, null, 'coin', 'stuff', coins);
+			coins.callAll('animations.add', 'animations', 'spin',
+					[ 0, 0, 1, 2 ], 3, true);
+			coins.callAll('animations.play', 'animations', 'spin');
+
+			goombas = game.add.group();
+			goombas.enableBody = true;
+			map.createFromTiles(1, null, 'goomba', 'stuff', goombas);
+			goombas.callAll('animations.add', 'animations', 'walk', [ 0, 1 ],
+					2, true);
+			goombas.callAll('animations.play', 'animations', 'walk');
+			goombas.setAll('body.bounce.x', 1);
+			goombas.setAll('body.velocity.x', -20);
+			goombas.setAll('body.gravity.y', 500);
+
+			player = game.add.sprite(16, game.world.height - 48, 'mario');
+			game.physics.arcade.enable(player);
+			player.body.gravity.y = 370;
+			player.body.collideWorldBounds = true;
+			player.animations.add('walkRight', [ 1, 2, 3 ], 10, true);
+			player.animations.add('walkLeft', [ 8, 9, 10 ], 10, true);
+			player.goesRight = true;
+
+			game.camera.follow(player);
+
+			cursors = game.input.keyboard.createCursorKeys();
+			
+			scoreText = game.add.text(16,16,'Score:0',{fontSize:'16px',fill:'#FF0000'});
+			scoreText.fixedToCamera = true;
+             		
+			lifeText = game.add.text(16, 30, 'life: 3', { fontSize: '16px', fill: '#FF0000' });
+			lifeText.fixedToCamera = true;
+		}
+
+		function update() {
+			game.physics.arcade.collide(player, layer);
+			game.physics.arcade.collide(goombas, layer);
+			game.physics.arcade.overlap(player, goombas, goombaOverlap);
+			game.physics.arcade.overlap(player, coins, coinOverlap);
+
+			if (player.body.enable) {
+				player.body.velocity.x = 0;
+				if (cursors.left.isDown) {
+					player.body.velocity.x = -90;
+					player.animations.play('walkLeft');
+					player.goesRight = false;
+				} else if (cursors.right.isDown) {
+					player.body.velocity.x = 90;
+					player.animations.play('walkRight');
+					player.goesRight = true;
+				} else {
+					player.animations.stop();
+					if (player.goesRight)
+						player.frame = 0;
+					else
+						player.frame = 7;
+				}
+
+				if (cursors.up.isDown && player.body.onFloor()) {
+					player.body.velocity.y = -190;
+					player.animations.stop();
+				}
+
+				if (player.body.velocity.y != 0) {
+					if (player.goesRight)
+						player.frame = 5;
+					else
+						player.frame = 12;
+				}
+			}
+		}
+
 		function coinOverlap(player, coin) {
-			kling = game.add.audio('kling');
 			coin.kill();
-			kling.play();
-			score++; 
-			text.text = 'SCORE:' +score;
-		}
-		function end(){
 			
-			var style2 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
-			var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
-			endtext = game.add.text(120, 150, "CONGRATULATIONS", style2);
-			text = game.add.text(360, 250, "SCORE:  "+score, style);
-			endtext.fixedToCamera=true; 
-			text.fixedToCamera=true;
-			player.body.enable = false;
-			player.animations.stop();
+			score+=10;
+			scoreText.text='Score:' + score;
 			
-			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-				
-			game.stage.backgroundColor = '#000000';	
-			score = 0;
-			game.state.start('menu');
-				});
+			var audio = new Audio('audio/coin.wav');
+ -                        audio.play()
 		}
-		
+
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {
 				goomba.animations.stop();
@@ -66,61 +163,22 @@ body {
 					goomba.kill();
 				});
 			} else {
-				player.frame = 6;
-				player.body.enable = false;
-				player.animations.stop();
-				if (lives>=1) {
-					lives--;
-					score = 0;
-					die();
-				}
-				else{
-				
-					dying();
+				life--;
+                                lifeText.text = 'life: ' +life;
+				player.x=player.x-30;
+			       var snd =game.add.audio("stomp");
+				snd.play();}
+				if(life==0){
+					player.frame = 6;
+					player.body.enable = false;
+					player.animations.stop();
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+					gameoverText = game.add.text(20, 100, 'GAME OVER', { fontSize: '32px', fill: '#FF0000' });
+			        	gameoverText.fixedToCamera = true;			     
+					game.paused = true;
+				});
 			}
 		}
-			
-		/*function mush2collide(player, mush2){
-			if (player.body.touching.up){
-				mush2.body.enable = false;
-				end();
-			}else if (player.body.touching.right){
-				mush2.body.enable = false;
-				end();
-			}else if (player.body.touching.left){
-				
-				mush2.body.enable = false;
-				end();
-			}else
-				mush2.body.enable = false;
-				end();
-		}*/
-		function die(){
-		//	dies = game.add.audio('dies');
-			//lives--;
-			score = 0;
-			//back.stop();
-			//dies.play();
-			game.state.start(game.state.current);
-		}
-			function dying(){
-		
-			//game_over = game.add.audio('game_over');
-			var style2 = { font: "bold 50px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
-			game_overtext = game.add.text(280, 150, "GAME OVER", style2);
-			var style = { font: "bold 70px Arial", fill: "#FFA500", boundsAlignH: "center", boundsAlignV: "middle" };
-			text = game.add.text(360, 250, "SCORE:  "+score, style);
-			text.fixedToCamera = true;
-			game_overtext.fixedToCamera=true; 
-			game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-			game.stopped = true;
-			//back.stop();
-			game.stage.backgroundColor = '#000000';
-			score = 0;
-			game.state.start('menu');
-				});
-		}		
-	}
-</script>
+	</script>
 </body>
 </html>
