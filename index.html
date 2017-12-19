@@ -86,6 +86,8 @@ body {
 		}
 
 		function update() {
+			player = game.add.sprite(16, game.world.height - 48, 'mario');
+
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
