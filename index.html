@@ -85,8 +85,8 @@ body {
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
-			text = game.add.text(10,10,"SCORE : " + scoreCounter,scoreStyle);
-			text.fixedToCamera=true;
+			textScore = game.add.text(10,10,"SCORE : " + scoreCounter,scoreStyle);
+			textScore.fixedToCamera=true;
 
 		}
 
@@ -132,6 +132,7 @@ body {
 		function coinOverlap(player, coin) {
 			coin.kill();
 			scoreCounter++;
+			textScore.text = "SCORE : " + scoreCounter ;
 			
 		}
 
