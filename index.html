@@ -19,6 +19,8 @@ body {
 			create : create,
 			update : update
 		}, false, false);
+		var scoreCounter = 0;
+	        var scoreStyle = {font : "bold 20pt Arial",fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle"};
 
 		function preload() {
 
@@ -122,10 +124,13 @@ body {
 						player.frame = 12;
 				}
 			}
+			text = game.add.text(360,250,"SCORE : " + scoreCounter,scoreStyle);
 		}
 
 		function coinOverlap(player, coin) {
 			coin.kill();
+			scoreCounter++;
+			
 		}
 
 		function goombaOverlap(player, goomba) {
