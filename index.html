@@ -26,7 +26,7 @@ body {
 		var scoreCounter = 0;
 	        var scoreStyle = {font : "bold 10pt Arial",fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle"};
 		var livesStyle = {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
-		var timeStyle =  {font : "bold 5pt Arial",fill :"#000" , boundsAlignH: "right", boundsAlignV: "right"};
+		var timeStyle =  {font : "bold 5pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
 		var currentTime = 0;
 		var lives = 1; 
 		var coinsCounter = 0;
@@ -94,12 +94,7 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			
-			//print_status_to_screen();
-			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
-			textScore.fixedToCamera=true;
-			
-			textLives = game.add.text(10,27,"LIVES : " + lives, livesStyle);
-			textLives.fixedToCamera = true;
+			print_status_to_screen();
 		}
 
 		function update() {
@@ -115,6 +110,7 @@ body {
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
+					alert("down!");
 					player.body.velocity.x = -90;
 					player.animations.play('walkLeft');
 					player.goesRight = false;
