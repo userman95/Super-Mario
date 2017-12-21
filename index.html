@@ -182,7 +182,13 @@ body {
 				}
 				else {
 					lives--;
-					textLives.text = "LIVES : " + lives;
+					if(lives <0){
+						//TO DO END GAME PRINT->
+						textLives.text = "LIVES : NONE";
+					}
+					else{
+						textLives.text = "LIVES : " + lives;
+					}
 				}
 		  	      }
 			
