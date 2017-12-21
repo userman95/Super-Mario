@@ -26,6 +26,8 @@ body {
 		var scoreCounter = 0;
 	        var scoreStyle = {font : "bold 10pt Arial",fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle"};
 		var livesStyle = {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
+		var timeStyle =  {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
+		var currentTime = 0;
 		var lives = 0; 
 		var coinsCounter = 0;
 		
@@ -99,7 +101,8 @@ body {
 			textLives = game.add.text(10,27,"LIVES : " + lives,livesStyle);
 			textLives.fixedToCamera = true;
 			
-			alert(game.time.events.loop(Phaser.Timer.SECOND));
+			currentTime = game.add.text(10,45,"TIME : " + game.time.events.loop(Phaser.Timer.SECOND), timeStyle);
+			
 
 		}
 
