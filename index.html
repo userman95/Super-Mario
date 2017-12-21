@@ -171,7 +171,8 @@ body {
 						textLives.text = "LIVES : " + lives;
 						player.frame = 6;
 						player.body.enabled = false;
-						restart();
+						
+						game.time.events.add(Phaser.Timer.SECOND * 2, restart(), this);
 						
 					}
 				}
