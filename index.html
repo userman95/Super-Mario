@@ -202,7 +202,7 @@ body {
 						player.frame = 6;
 						player.body.enabled = false;
 						game.time.events.add(Phaser.Timer.SECOND * 3, function() {game.state.restart();});
-						
+						game.paused = true;
 					}
 				}
 		  	      }
