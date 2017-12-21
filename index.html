@@ -161,7 +161,7 @@ body {
 		}
 
 		function goombaOverlap(player, goomba) {
-			if (player.body.touching.down && lives>=0) {
+			if (player.body.touching.down/* && lives>=0*/) {
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
@@ -170,9 +170,9 @@ body {
 					goomba.kill();
 				});
 			}
-			else if(player.body.touching.down && lives<0){
-				player.body.enable = false;
-			}
+			//else if(player.body.touching.down && lives<0){
+			//	player.body.enable = false;
+			//}
 			else {			      
 				if (lives < 0) {
 					//jump after death
@@ -181,7 +181,7 @@ body {
 					
 					player.animations.stop();
 					
-					//player.body.enable = false;
+					player.body.enable = false;
 
 					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true; // END OF GAME
