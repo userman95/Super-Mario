@@ -175,12 +175,11 @@ body {
 					else{
 						//textLives.text = "LIVES : " + lives;
 						print_status_to_screen();
-						player.frame = 6;
-						//player.body.enabled = false;
 						
+						//player.body.enabled = false;
+						death_of_player();
 						//Delay 3seconds before restart().
 						//game.time.events.add(3000, game.state.restart() );
-						restart();
 					}
 				}
 		  	  }	
@@ -201,6 +200,7 @@ body {
 				
 		}
 		function death_of_player(){
+			player.frame = 6;
 			player.body.velocity.y = -190;
 			player.animations.stop();
 			game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
