@@ -161,10 +161,7 @@ body {
 					goomba.kill();
 				});
 			}
-			else {
-				lives--;
-			        textLives.text = "LIVES : " + lives;
-			      
+			else {			      
 				if (live == 0) {
 					player.frame = 6;
 					player.body.enable = false;
@@ -172,7 +169,11 @@ body {
 					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true; // END OF GAME
 					});
-				
+				}
+				else {
+					lives--;
+					textLives.text = "LIVES : " + lives;
+				}
 		  	      }
 			
 		}
