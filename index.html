@@ -165,6 +165,7 @@ body {
 				if (lives === 0) {
 					player.frame = 6;
 					player.body.enable = false;
+					player.y = player.y - 50;
 					player.animations.stop();
 					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true; // END OF GAME
