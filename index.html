@@ -30,6 +30,7 @@ body {
 		var currentTime = 0;
 		var lives = 1; 
 		var coinsCounter = 0;		
+		var isDead = false;
 		
 		function preload() {
 
@@ -99,7 +100,7 @@ body {
 		}
 
 		function update() {
-			var isDead = false;
+			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
