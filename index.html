@@ -163,7 +163,7 @@ body {
 		}
 
 		function goombaOverlap(player, goomba) {
-			if (player.body.touching.down/* && lives>=0*/) {
+			if (player.body.touching.down) {
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
@@ -171,10 +171,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
 				});
-			}
-			//else if(player.body.touching.down && lives<0){
-			//	player.body.enable = false;
-			//}
+			}			
 			else {			      
 				if (lives < 0) {
 					//jump after death								               
@@ -187,6 +184,7 @@ body {
 				}
 				else {
 					lives--;
+					player.y = player.y-50;
 					if(lives <0){
 						//TO DO END GAME PRINT->
 						textLives.text = "LIVES : NONE";
