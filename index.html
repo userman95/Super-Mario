@@ -171,7 +171,7 @@ body {
 				});
 			}
 			else if(player.body.touching.down && lives<0){
-				player.body.velocity.y = +100;
+				player.body.enable = false;
 			}
 			else {			      
 				if (lives < 0) {
