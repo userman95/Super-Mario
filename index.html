@@ -173,21 +173,14 @@ body {
 					//textLives.text = "LIVES : " + lives;
 					print_status_to_screen();
 
-					//player.body.enabled = false;
-					death_of_player();
-					//Delay 3seconds before restart().
-					//game.time.events.add(3000, game.state.restart() );
-
+					player.frame = 6;
+					player.body.velocity.y = -190;
+					player.animations.stop();
+					game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
+					game.state.restart();
 				}
 		  	  }	
-		}
-		
-		function restart(){
-			//Score&Time starts again form 0.
-			scoreCounter = 0;
-			
-			game.state.restart(); 
-		}
+		}				
 		function print_status_to_screen(){
 			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
 			textScore.fixedToCamera=true;
