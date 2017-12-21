@@ -179,7 +179,7 @@ body {
 						player.body.enabled = false;
 						
 						//Delay 3seconds before restart().
-						game.time.events.add(3000, restart());
+						game.time.events.add(3000, function() {restart();});
 						
 					}
 				}
@@ -215,7 +215,7 @@ body {
 			res.y = death.y + 15
 			
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
-			spaceb.onDown.add(Phaser.Timer.SECOND, restart() );
+			spaceb.onDown.add(Phaser.Timer.SECOND, function() {restart();} );
 
 			//game.paused = true; // END OF GAME
 		}
