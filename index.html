@@ -174,7 +174,7 @@ body {
 					lives--;										
 					//textLives.text = "LIVES : " + lives;
 					//print_status_to_screen();
-					player.frame = 6;
+					
 					player.body.velocity.y = -190;
 					player.animations.stop();
 					game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
