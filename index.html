@@ -176,15 +176,14 @@ body {
 						//textLives.text = "LIVES : " + lives;
 						print_status_to_screen();
 						player.frame = 6;
-						player.body.enabled = false;
+						//player.body.enabled = false;
 						
 						//Delay 3seconds before restart().
-						game.time.events.add(3000, game.state.restart() );
-						
+						//game.time.events.add(3000, game.state.restart() );
+						restart();
 					}
 				}
-		  	  }
-			
+		  	  }	
 		}
 		
 		function restart(){
