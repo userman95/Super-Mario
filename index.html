@@ -210,14 +210,12 @@ body {
 			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
 			death.x = game.camera.x + game.camera.width/2 - death.width/2;
 			death.y = game.camera.y + game.camera.height/2 - death.height/2;
-			death.fixedToCamera = true;
 			res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
 			res.x = game.camera.x + game.camera.width/2 - res.width/2;
 			res.y = death.y + 15;
-			res.fixedToCamera = true;
 			
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
-			spaceb.onDown.add(function(){ game.state.restart(); });
+			spaceb.onDown.add( restart() );
 
 			//game.paused = true; // END OF GAME
 		}
