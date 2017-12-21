@@ -29,8 +29,7 @@ body {
 		var timeStyle =  {font : "bold 5pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
 		var currentTime = 0;
 		var lives = 1; 
-		var coinsCounter = 0;
-		var isDead = false;
+		var coinsCounter = 0;		
 		
 		function preload() {
 
@@ -100,6 +99,7 @@ body {
 		}
 
 		function update() {
+			var isDead = false;
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
