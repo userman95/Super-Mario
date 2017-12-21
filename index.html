@@ -101,8 +101,8 @@ body {
 			textLives = game.add.text(10,27,"LIVES : " + lives,livesStyle);
 			textLives.fixedToCamera = true;
 			
-			//currentTime = game.add.text(10,45,"TIME : " + (this.game.time.totalElapsedSeconds(), 32,32), timeStyle);
-			//currentTime.fixedToCamera=true;
+			currentTime = game.add.text(10,45,"TIME : " + game.time.now ,timeStyle);
+			currentTime.fixedToCamera=true;
 			
 
 		}
@@ -170,11 +170,11 @@ body {
 			else {			      
 				if (lives === 0) {
 					player.frame = 6;
-					player.animations.stop();
 					//jump after death
 					player.body.velocity.y = -190;
-					
-					//player.body.enable = false;
+					player.animations.stop();
+
+					player.body.enable = false;
 
 					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true; // END OF GAME
