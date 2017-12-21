@@ -95,10 +95,10 @@ body {
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
-			textScore = game.add.text(10,10,"SCORE : " + scoreCounter,scoreStyle);
+			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
 			textScore.fixedToCamera=true;
 			
-			textLives = game.add.text(10,27,"LIVES : " + lives,livesStyle);
+			textLives = game.add.text(10,27,"LIVES : " + lives, livesStyle);
 			textLives.fixedToCamera = true;
 			
 			//currentTime = game.add.text(10,45,"TIME : " + game.time.now ,timeStyle);
@@ -169,9 +169,9 @@ body {
 			}
 			else {			      
 				if (lives < 0) {
-					player.body.velocity.y = -190;
-					player.frame = 6;
 					//jump after death
+					player.frame = 6;
+					player.body.velocity.y = -190;
 					
 					player.animations.stop();
 					//player.body.enable = false;
