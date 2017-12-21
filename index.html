@@ -172,7 +172,8 @@ body {
 						player.frame = 6;
 						player.body.enabled = false;
 						
-						game.time.events.add(Phaser.Timer.SECOND * 4, restart());
+						//Delay 3seconds before restart().
+						game.time.events.add(3000, restart());
 						
 					}
 				}
