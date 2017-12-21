@@ -183,14 +183,14 @@ body {
 					});									
 				}
 				else {
-					lives--;
-					player.y = player.y-50;
+					lives--;					
 					if(lives <0){
 						//TO DO END GAME PRINT->
 						textLives.text = "LIVES : NONE";
 					}
 					else{
 						textLives.text = "LIVES : " + lives;
+						player.y = player.y-50;
 					}
 				}
 		  	      }
