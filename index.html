@@ -95,6 +95,7 @@ body {
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
+			
 			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
 			textScore.fixedToCamera=true;
 			
@@ -178,7 +179,7 @@ body {
 					//jump after death
 					//player.frame = 6;
 					player.body.velocity.y = -190;
-					
+					cursors.enabled = false;
 					player.animations.stop();
 					
 					game.time.events.add(Phaser.Timer.SECOND , function() {
