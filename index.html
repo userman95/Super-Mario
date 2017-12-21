@@ -94,7 +94,12 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			
-			print_status_to_screen();
+			//print_status_to_screen();
+			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
+			textScore.fixedToCamera=true;
+			
+			textLives = game.add.text(10,27,"LIVES : " + lives, livesStyle);
+			textLives.fixedToCamera = true;
 		}
 
 		function update() {
