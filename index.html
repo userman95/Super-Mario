@@ -179,7 +179,7 @@ body {
 						player.body.enabled = false;
 						
 						//Delay 3seconds before restart().
-						game.time.events.add(3000, function() {restart();} );
+						game.time.events.add(3000, game.state.restart() );
 						
 					}
 				}
