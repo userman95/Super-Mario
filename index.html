@@ -201,12 +201,16 @@ body {
 						textLives.text = "LIVES : " + lives;
 						player.frame = 6;
 						player.body.enabled = false;
-						game.state.restart(); 
+						restart();
 						
 					}
 				}
-		  	      }
+		  	  }
 			
+		}
+		
+		function restart(){
+			game.state.restart(); 
 		}
 	</script>
 </body>
