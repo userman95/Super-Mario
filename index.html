@@ -212,7 +212,7 @@ body {
 			death.y = game.camera.y + game.camera.height/2 - death.height/2;
 			res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
 			res.x = game.camera.x + game.camera.width/2 - res.width/2;
-			res.y = death.y + 15;
+			res.y = death.y + 15
 			
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			spaceb.onDown.add( restart() );
