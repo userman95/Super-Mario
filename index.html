@@ -160,17 +160,16 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
 				});
-			} else {
-				lives--;}				
-				if(lives <= 0){
+			}
+			else if(lives <= 0){
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
 				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 				game.paused = true; // END OF GAME
 				});
-				
 				}
+			else {lives--;}
 			}
 		}
 	</script>
