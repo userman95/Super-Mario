@@ -161,7 +161,11 @@ body {
 					goomba.kill();
 				});
 			}
-			else if(lives < 0){
+			else {
+				lives--;
+			        textLives.text = "LIVES : " + lives;
+			      }
+				if (live ==0) {
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
@@ -169,9 +173,6 @@ body {
 				game.paused = true; // END OF GAME
 				});
 				}
-			else {lives--;
-			     textLives.text = "LIVES : " + lives;
-			     }
 			
 		}
 	</script>
