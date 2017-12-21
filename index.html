@@ -49,6 +49,11 @@ body {
 		}
 
 		function create() {
+			
+			//TEST sprite:
+			var Metroid;
+			Metroid = game.sprite.add(0, 0, 'Metroid');
+			
 			isDead = false;
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
