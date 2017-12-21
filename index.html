@@ -163,7 +163,7 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() { goomba.kill(); });
 			}			
 			else {					//kill player by goomba.
-				if (lives < 0) {
+				if (lives <= 0) {
 					textLives.text = "LIVES : NONE";
 					death_of_player();					
 				}
