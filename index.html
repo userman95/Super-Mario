@@ -165,13 +165,18 @@ body {
 			else {					//kill player by goomba.
 				if (lives < 0) {
 					textLives.text = "LIVES : NONE";
-					death_of_player();								
+					//death_of_player();
+					player.frame = 6;
+					player.body.velocity.y = -190;
+					player.animations.stop();
+					game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
+					game.state.restart();
 				}
 				else {
 					lives--;					
 					
 					//textLives.text = "LIVES : " + lives;
-					print_status_to_screen();
+					//print_status_to_screen();
 
 					player.frame = 6;
 					player.body.velocity.y = -190;
