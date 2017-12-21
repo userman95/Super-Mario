@@ -168,18 +168,17 @@ body {
 				goomba.frame = 2;
 				goomba.body.enable = false;
 				player.body.velocity.y = -80;
-				game.time.events.add(Phaser.Timer.SECOND, function() {
-					goomba.kill();
-				});
+				game.time.events.add(Phaser.Timer.SECOND, function() { goomba.kill(); });
 			}			
 			else {			      
 				if (lives < 0) {
 					//jump after death								               
 					player.body.velocity.y = -190;
 					player.animations.stop();
-					game.time.events.add(Phaser.Timer.SECOND , function());					
-					player.body.enable = false;
+					game.time.events.add(Phaser.Timer.SECOND , function() {					
+					player.body.enable = false; });
 					
+							     
 					//TEST
 					death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
 					death.x = game.camera.x + game.camera.width/2 - death.width/2;
@@ -191,7 +190,7 @@ body {
 					spaceb.onDown.add(function(){ game.state.restart(); });
 						
 					//game.paused = true; // END OF GAME
-					});									
+														
 				}
 				else {
 					lives--;					
@@ -201,7 +200,9 @@ body {
 					}
 					else{
 						textLives.text = "LIVES : " + lives;
-						player.y = player.y-50;
+						player.frame = 6;
+						player.body.enabled = false;
+						game.time.events.add(Phaser.Timer.SECOND *3);
 						game.state.restart();
 					}
 				}
