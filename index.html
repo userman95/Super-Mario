@@ -163,24 +163,21 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() { goomba.kill(); });
 			}			
 			else {					//kill player by goomba.
-				if (lives < 0) {								               
+				if (lives < 0) {
+					textLives.text = "LIVES : NONE";
 					death_of_player();								
 				}
 				else {
 					lives--;					
-					if(lives <0){
-						//TO DO END GAME PRINT here
-						textLives.text = "LIVES : NONE";
-					}
-					else{
-						//textLives.text = "LIVES : " + lives;
-						print_status_to_screen();
-						
-						//player.body.enabled = false;
-						//death_of_player();
-						//Delay 3seconds before restart().
-						//game.time.events.add(3000, game.state.restart() );
-					}
+					
+					//textLives.text = "LIVES : " + lives;
+					print_status_to_screen();
+
+					//player.body.enabled = false;
+					//death_of_player();
+					//Delay 3seconds before restart().
+					//game.time.events.add(3000, game.state.restart() );
+
 				}
 		  	  }	
 		}
