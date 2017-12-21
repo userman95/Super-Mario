@@ -143,6 +143,9 @@ body {
 					else
 						player.frame = 12;
 				}
+				if (player.body.velocity.y != 0 && lives<0) {
+					player.frame = 6;	
+				}
 			}
 		}
 
@@ -170,11 +173,11 @@ body {
 			else {			      
 				if (lives < 0) {
 					//jump after death
-					player.frame = 6;
+					//player.frame = 6;
 					player.body.velocity.y = -190;
 					
 					player.animations.stop();
-					//player.body.enable = false;
+					player.body.enable = false;
 
 					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
 					game.paused = true; // END OF GAME
