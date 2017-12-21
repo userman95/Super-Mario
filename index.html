@@ -39,14 +39,12 @@ body {
 			this.load.crossOrigin = 'anonymous';
 			 
 			// dimension of every frame is 16x16
-			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
-					16);
+			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 			this.load.spritesheet('mario', 'assets/mario.png', 16, 16); 
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 
-			this.load.tilemap('level', 'assets/supermariomap.json', null,
-					Phaser.Tilemap.TILED_JSON);
+			this.load.tilemap('level', 'assets/supermariomap.json', null, Phaser.Tilemap.TILED_JSON);
 		}
 
 		function create() {
@@ -96,11 +94,10 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 			
-			print_to_screen();
+			print_status_to_screen();
 		}
 
 		function update() {
-			
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
@@ -136,8 +133,7 @@ body {
 						player.frame = 12;
 				}
 				if (player.body.velocity.y != 0 && lives<0) {
-					player.frame = 6;
-					
+					player.frame = 6;	
 				}
 			}
 		}
@@ -154,38 +150,21 @@ body {
 		}
 
 		function goombaOverlap(player, goomba) {
-			if (player.body.touching.down) {
+			if (player.body.touching.down) {	//kill goomba by jumping on it.
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
 				player.body.velocity.y = -80;
 				game.time.events.add(Phaser.Timer.SECOND, function() { goomba.kill(); });
 			}			
-			else {			      
-				if (lives < 0) {
-					//jump after death								               
-					player.body.velocity.y = -190;
-					player.animations.stop();
-					game.time.events.add(Phaser.Timer.SECOND , function() {					
-					player.body.enable = false; });
-					
-					//TEST
-					death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
-					death.x = game.camera.x + game.camera.width/2 - death.width/2;
-					death.y = game.camera.y + game.camera.height/2 - death.height/2;
-					res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
-					res.x = game.camera.x + game.camera.width/2 - res.width/2;
-					res.y = death.y + 15 
-					var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
-					spaceb.onDown.add(function(){ game.state.restart(); });
-						
-					//game.paused = true; // END OF GAME
-														
+			else {					//kill player by goomba.
+				if (lives < 0) {								               
+					death_of_player();								
 				}
 				else {
 					lives--;					
 					if(lives <0){
-						//TO DO END GAME PRINT->
+						//TO DO END GAME PRINT here
 						textLives.text = "LIVES : NONE";
 					}
 					else{
@@ -203,7 +182,7 @@ body {
 		function restart(){
 			game.state.restart(); 
 		}
-		function print_to_screen(){
+		function print_status_to_screen(){
 			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
 			textScore.fixedToCamera=true;
 			
@@ -212,6 +191,23 @@ body {
 			
 			//currentTime = game.add.text(10,45,"TIME : " + game.time.now ,timeStyle);
 			//currentTime.fixedToCamera=true;	
+		}
+		function death_of_player(){
+			player.body.velocity.y = -190;
+			player.animations.stop();
+			game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
+
+			//TEST
+			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
+			death.x = game.camera.x + game.camera.width/2 - death.width/2;
+			death.y = game.camera.y + game.camera.height/2 - death.height/2;
+			res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
+			res.x = game.camera.x + game.camera.width/2 - res.width/2;
+			res.y = death.y + 15 
+			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
+			spaceb.onDown.add(function(){ game.state.restart(); });
+
+			//game.paused = true; // END OF GAME
 		}
 	</script>
 </body>
