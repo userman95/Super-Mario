@@ -215,7 +215,7 @@ body {
 			res.y = death.y + 15
 			
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
-			spaceb.onDown.add(Phaser.Timer.SECOND, fucntion() {game.state.restart(); });
+			spaceb.onDown.add(Phaser.Timer.SECOND, game.state.restart() );
 
 			//game.paused = true; // END OF GAME
 		}
