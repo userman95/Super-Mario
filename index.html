@@ -94,7 +94,7 @@ body {
 			player.animations.add('walkRight', [113,114,115,116,117,118,119,120,121,122], 15, true);
 			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 10, true);
 			player.animations.add('jumpLeft' , [241,242,243,244,245,246,247,248] , 30, true );
-			player.animations.add('jumpRight' , [225,226,227,228,229,230,231,232] , 30, true );
+			player.animations.add('jumpRight' , [225,226,227,228,229,230,231,232] , 5, true );
 			player.goesRight = true;
 			player.body.enable=true;
 			
@@ -161,10 +161,10 @@ body {
 
 				if (player.body.velocity.y != 0 && isDead === false) {
 					if (player.goesRight)
-						for(i=225;i<233;i++){
-							player.frame= i;
-						//player.animations.play('jumpRight');
-						}
+						//for(i=225;i<233;i++){
+							//player.frame= i;
+						player.animations.play('jumpRight');
+						//}
 					else
 						player.animations.play('jumpLeft');
 				}
