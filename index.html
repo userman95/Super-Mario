@@ -86,7 +86,8 @@ body {
 			goombas.setAll('body.gravity.y', 500);
 
 			player = game.add.sprite(16, game.world.height - 100, 'mario');
-			player.scale.setTo(1,1); // scaling
+			player.scale.x = 16;
+			player.scale.y = 32;// scaling
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
 			player.body.collideWorldBounds = true;
