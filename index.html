@@ -102,12 +102,12 @@ body {
 		}
 
 		function update() {
-			
+			player.scale.setTo(-0.05, -0.05);
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			
+		
 			//Time starts from now:
 			//currentTime = game.add.text(10,45,"time : " + game.time.now ,timeStyle);
 			//currentTime.fixedToCamera=true;
