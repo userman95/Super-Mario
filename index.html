@@ -102,7 +102,7 @@ body {
 			
 			print_status_to_screen();
 			
-			bounds = player.setRectangle(64,64,64,64);
+			bounds = player.body.setRectangle(64,64,64,64);
 			var graphics = game.add.graphics(bounds.x,bounds.y);
 			graphics.lineStyle(4, 0xffd900, 1);
    		        graphics.drawRect(0, 0, bounds.width, bounds.height);
