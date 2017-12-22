@@ -42,7 +42,7 @@ body {
 			// dimension of every frame is 16x16
 			this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16, 16);
 			this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
-			this.load.spritesheet('mario', 'assets/crash.png', 42, 53); 
+			this.load.spritesheet('mario', 'assets/Metroid.png', 64, 64); 
 			this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 
 			this.load.tilemap('level', 'assets/supermariomap.json', null, Phaser.Tilemap.TILED_JSON);
@@ -86,12 +86,12 @@ body {
 			goombas.setAll('body.gravity.y', 500);
 
 			player = game.add.sprite(16, game.world.height - 100, 'mario');
-			player.scale.setTo(0.5,0.5);
+			//player.scale.setTo(0.5,0.5);
 
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
 			player.body.collideWorldBounds = true;
-			player.animations.add('walkRight', [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ], 30, true);
+			player.animations.add('walkRight', [76,77,78,79,80,81,82,83,84,85], 30, true);
 			player.animations.add('walkLeft', [ 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50 ], 10, true);
 			player.goesRight = true;
 			player.body.enable=true;
