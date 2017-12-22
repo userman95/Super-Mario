@@ -101,7 +101,11 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			print_status_to_screen();
-			player.add.Phaser.Rectangle(200,200,300,200);
+			bounds = player.add.Phaser.Rectangle(200,200,300,300);
+			var graphics = game.add.graphics(bounds.x,bounds.y);
+			graphics.lineStyle(4, 0xffd900, 1);
+   		        graphics.drawRect(0, 0, bounds.width, bounds.height);
+
 		}
 
 		function update() {
