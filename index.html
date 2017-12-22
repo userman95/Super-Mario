@@ -61,7 +61,7 @@ body {
 
 			map = game.add.tilemap('level');
 			map.addTilesetImage('super_mario_tiles', 'tiles');
-			map.setCollisionBetween(3, 12, true, 'solid');
+			map.setCollisionBetween(9, 12, true, 'solid');
 
 			map.createLayer('background');
 
@@ -217,9 +217,7 @@ body {
 
 			//game.paused = true; // END OF GAME
 		}
-		function render (){
-			this.game.debug.body(player);
-		}
+	
 	</script>
 </body>
 </html>
