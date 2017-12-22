@@ -134,7 +134,6 @@ body {
 				}
 				// jump xwris kinisi
 				if (cursors.up.isDown && player.body.onFloor()) {
-					player.frame = 99;
 					player.body.velocity.y = -190;					
 					//player.animations.stop();
 					
@@ -161,9 +160,9 @@ body {
 
 				if (player.body.velocity.y != 0 && isDead === false) {
 					if (player.goesRight)
-						player.frame = 99;
+						player.animations.play('jumpRight');
 					else
-						player.frame = 12;
+						player.animations.play('jumpLeft');
 				}
 				if (player.body.velocity.y != 0 && isDead === true) {
 					player.frame = 6;	
