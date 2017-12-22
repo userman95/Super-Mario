@@ -133,9 +133,20 @@ body {
 						player.frame = 0;
 				}
 
-				if (cursors.up.isDown && player.body.onFloor()) {
+				/*if (cursors.up.isDown && player.body.onFloor()) {
 					player.body.velocity.y = -190;
 					player.animations.stop();
+				}*/
+				//jump left
+				if (cursors.up.isDown && cursor.left.isDown && player.body.onFloor() ) {
+					player.body.velocity.y = -190;
+					player.animations.play('jumpLeft');
+					player.goesRight = false;
+				}
+				if (cursors.up.isDown && cursor.right.isDown && player.body.onFloor() ) {
+					player.body.velocity.y = -190;
+					player.animations.play('jumpRight');
+					player.goesRight = true;
 				}
 
 				if (player.body.velocity.y != 0 && isDead === false) {
