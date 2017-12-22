@@ -56,12 +56,12 @@ body {
 			game.scale.pageAlignVertically = true
 			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 			game.physics.startSystem(Phaser.Physics.ARCADE);
-
+			
 			game.stage.backgroundColor = '#5c94fc';
 
 			map = game.add.tilemap('level');
 			map.addTilesetImage('super_mario_tiles', 'tiles');
-			map.setCollisionBetween(9, 12, true, 'solid');
+			map.setCollisionBetween(3, 12, true, 'solid');
 
 			map.createLayer('background');
 
@@ -101,6 +101,7 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 			
 			print_status_to_screen();
+			player.add.Phaser.Rectangle(100,100,200,200);
 		}
 
 		function update() {
