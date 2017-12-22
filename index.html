@@ -92,7 +92,9 @@ body {
 			player.body.gravity.y = 370;
 			player.body.collideWorldBounds = true;
 			player.animations.add('walkRight', [113,114,115,116,117,118,119,120,121,122], 30, true);
-			player.animations.add('walkLeft', [ 49,50,51,52,53,54,55,56,57,58], 20, true);
+			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 20, true);
+		//	player.animation.add('jumpRight' , [] , 30, true );
+		//	player.animation.add('jumpLeft' , [] , 30, true );
 			player.goesRight = true;
 			player.body.enable=true;
 			
@@ -126,9 +128,9 @@ body {
 				} else {
 					player.animations.stop();
 					if (player.goesRight)
-						player.frame = 0;
+						player.frame = 3;
 					else
-						player.frame = 7;
+						player.frame = 0;
 				}
 
 				if (cursors.up.isDown && player.body.onFloor()) {
