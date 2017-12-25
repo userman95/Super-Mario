@@ -207,7 +207,7 @@ body {
 			player.body.velocity.y = -190;
 			player.animations.stop();
 			game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
-
+			player.animations.play('explosion');
 			//TEST
 			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
 			death.x = game.camera.x + game.camera.width/2 - death.width/2;
@@ -219,7 +219,6 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
-			game.time.event.add(Phaser.Timer.SECOND,player.animations.play('explosion'));
 			spaceb.onDown.add(function(){game.state.restart(); });
 			
 
