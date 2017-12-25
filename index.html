@@ -219,7 +219,7 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
-			game.time.event.add(Phaser.Timer.SECOND,player.animations.play('explosion'););
+			game.time.event.add(Phaser.Timer.SECOND,player.animations.play('explosion'));
 			spaceb.onDown.add(function(){game.state.restart(); });
 			
 
