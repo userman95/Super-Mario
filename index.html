@@ -14,7 +14,7 @@ body {
 </head>
 <body>
 	<audio autoplay loop>
-        <source src="audio/Trance.mp3" type="audio/mpeg">
+        <source src="audio/Music.mp3" type="audio/mpeg">
         
     	</audio> 
 	<script type="text/javascript">
@@ -47,7 +47,7 @@ body {
 			this.load.tilemap('level', 'assets/finalmap.json', null, Phaser.Tilemap.TILED_JSON);
 			this.load.audio('kling','audio/coin.wav');
 			this.load.audio('jump','audio/jump.wav');
-
+			this.load.spritesheet('explosion', 'assets/explosion.png',64,64);
 		}
 
 		function create() {
@@ -97,6 +97,7 @@ body {
 			player.body.collideWorldBounds = true;
 			player.animations.add('walkRight', [97,98,99,100,101,102,103,104,105,106], 15, true);
 			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 10, true);
+			player.animations.add('explosions', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],10,true);
 			player.goesRight = true;
 			player.body.enable=true;
 			
@@ -176,7 +177,7 @@ body {
 			else {					//kill player by goomba.
 				isDead = true;
 				if (lives === 0) {
-					textLives.text = "LIVES : NONE";
+					textLives.text = "LIVES : NONE";					
 					death_of_player();					
 				}
 				else {
@@ -218,6 +219,7 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
+			game.time.event.add(Phaser.Timer.SECOND,player.animations.play('explosion'););
 			spaceb.onDown.add(function(){game.state.restart(); });
 			
 
