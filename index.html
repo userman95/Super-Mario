@@ -177,7 +177,7 @@ body {
 			}			
 			else {					//kill player by goomba.
 				isDead = true;
-				player.animations.play('explosion');					
+				game.time.events.add(Phaser.Timer.SECOND*3 ,player.animations.play('explosion'));				
 				if (lives === 0) {
 					textLives.text = "LIVES : NONE";					
 					death_of_player();					
