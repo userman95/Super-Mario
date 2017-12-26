@@ -47,12 +47,15 @@ body {
 			this.load.tilemap('level', 'assets/finalmap.json', null, Phaser.Tilemap.TILED_JSON);
 			this.load.audio('kling','audio/coin.wav');
 			this.load.audio('jump','audio/jump.wav');
-			this.load.spritesheet('explosion', 'assets/explosion.png',64,64);
+			this.load.image('explosion', 'assets/explosion.png',64,64);
 		}
 
 		function create() {
 			kling = game.add.audio('kling');
-			jumpSound = game.add.audio('jump');						
+			jumpSound = game.add.audio('jump');	
+		        explosions = game.add.group();
+  		        explosions.createMultiple(30, 'kaboom');
+			
 			isDead = false;
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
@@ -101,8 +104,8 @@ body {
 			player.goesRight = true;
 			player.body.enable=true;
 			
-			boom = game.add.sprite(player.x,player.y,'explosion');			
-			
+  			boom = game.add.group();
+			boom.createMultiple(30, 'boom');
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
@@ -179,7 +182,9 @@ body {
 			}			
 			else {					//kill player by goomba.
 				isDead = true;		
-				boom.animations.play('explosion');
+			        var explosion = boom.getFirstExists(false);
+ 			        explosion.reset(player.body.x, player.body.y);
+    			        explosion.play('boom', 30, false, true);
 				if (lives === 0) {
 					textLives.text = "LIVES : NONE";					
 					death_of_player();					
