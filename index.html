@@ -97,7 +97,8 @@ body {
 			player.body.collideWorldBounds = true;
 			player.animations.add('walkRight', [97,98,99,100,101,102,103,104,105,106], 15, true);
 			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 10, true);
-			player.animations.add('explosion', [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],30,true);
+			player.animations.add('explosion',10,false);
+			player.animations.play('explosion');
 			player.goesRight = true;
 			player.body.enable=true;
 			
@@ -125,9 +126,8 @@ body {
 					player.animations.play('walkLeft');
 					player.goesRight = false;
 				} else if (cursors.right.isDown) {
-					player.body.velocity.x = 90;
-					player.animations.play('explosion');
-					//player.animations.play('walkRight');
+					player.body.velocity.x = 90;					
+					player.animations.play('walkRight');
 					player.goesRight = true;
 				} else {
 					player.animations.stop();
