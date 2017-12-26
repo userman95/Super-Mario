@@ -151,6 +151,9 @@ body {
 				if (player.body.velocity.y != 0 && isDead === true) {
 					player.frame = 6;	
 				}
+				if (player.body.velocity === 0 && iDead === true){
+					player.animations.play('explosion');
+				}
 			}
 		}
 
@@ -188,8 +191,7 @@ body {
 					game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
 					scoreCounter = 0;
 					
-					player.animations.play('explosion');
-					game.time.events.add(Phaser.Timer.SECOND ,game.state.restart());
+					game.state.restart();
 				}
 		  	  }	
 		}				
