@@ -52,7 +52,7 @@ body {
 
 		function create() {
 			kling = game.add.audio('kling');
-			jumpSound = game.add.audio('jump');
+			jumpSound = game.add.audio('jump');						
 			isDead = false;
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
@@ -90,17 +90,19 @@ body {
 
 			player = game.add.sprite(16, game.world.height - 100, 'mario');
 			player.scale.setTo(0.75,0.75);
-
+			
 			game.physics.arcade.enable(player);
 			player.body.gravity.y = 370;
 			player.body.setSize(16, 32,16,32);
 			player.body.collideWorldBounds = true;
 			player.animations.add('walkRight', [97,98,99,100,101,102,103,104,105,106], 15, true);
 			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 10, true);
-			player.animations.add('explosion',10,false);
-			player.animations.play('explosion');
+			player.animations.add('explosion',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],10,false);			
 			player.goesRight = true;
 			player.body.enable=true;
+			
+			boom = game.add.sprite(player.x,player.y,'explosion');
+			boom.animations.play('explosion');
 			
 			game.camera.follow(player);
 
@@ -219,6 +221,7 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
+			boom.animations.play('explosion');
 			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
