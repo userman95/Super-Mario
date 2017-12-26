@@ -127,7 +127,6 @@ body {
 				} else if (cursors.right.isDown) {
 					player.body.velocity.x = 90;
 					player.animations.play('walkRight');
-			         	player.animations.play('explosions');					
 					player.goesRight = true;
 				} else {
 					player.animations.stop();
@@ -178,6 +177,7 @@ body {
 			}			
 			else {					//kill player by goomba.
 				isDead = true;
+				player.animations.play('explosions');					
 				if (lives === 0) {
 					textLives.text = "LIVES : NONE";					
 					death_of_player();					
