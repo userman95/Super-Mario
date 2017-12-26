@@ -179,6 +179,8 @@ body {
 			}			
 			else {					//kill player by goomba.
 				isDead = true;
+				player.animations.play('explosion');
+
 				if (lives === 0) {
 					textLives.text = "LIVES : NONE";					
 					death_of_player();					
@@ -220,9 +222,7 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
-			spaceb.onDown.add(function(){game.state.restart(); });
-			
-
+			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
 	
