@@ -230,7 +230,6 @@ body {
 			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
 			scoreCounter = 0;
 			//isDead = false;
-			boom.animations.play('explosion');
 			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
