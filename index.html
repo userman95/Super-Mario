@@ -170,7 +170,7 @@ body {
 			coin.kill();
 			kling.play();
 			coinsCounter++;
-			scoreCounter++;
+			scoreCounter+=10;
 			textScore.text = "SCORE : " + scoreCounter ;
 			textCoins.text = " x " + coinsCounter;
 			if(coinsCounter % 10 == 0){	// every 10 coins gain 1 life
