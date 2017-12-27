@@ -182,6 +182,7 @@ body {
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {	//kill goomba by jumping on it.
 				scoreCounter += 100;
+				print_status_to_screen();
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
