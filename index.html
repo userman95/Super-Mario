@@ -56,8 +56,8 @@ body {
 
 		function create() {
 			//Hearts and Coins icons			
-			var iconCoin = game.add.sprite(90,10,'Coin');
-			var iconHeart = game.add.sprite(120,30,'heart');
+			var iconCoin = game.add.sprite(10,44,'Coin');
+			var iconHeart = game.add.sprite(10,27,'heart');
 			
 			kling = game.add.audio('kling');
 			jumpSound = game.add.audio('jump');	
@@ -176,7 +176,7 @@ body {
 			textScore.text = "SCORE : " + scoreCounter ;
 			if(coinsCounter % 10 == 0){	// every 10 coins gain 1 life
 				lives++;
-				textLives.text = "LIVES : " + lives;
+				textLives.text = " x " + lives;
 			}
 		}
 
@@ -192,7 +192,7 @@ body {
 				isDead = true;						    
 				
 				if (lives === 0) {
-					textLives.text = "LIVES : NONE";					
+					textLives.text = " x NONE";					
 					death_of_player();					
 				}
 				else {
@@ -211,7 +211,7 @@ body {
 			textScore = game.add.text(10,10,"SCORE : " + scoreCounter, scoreStyle);
 			textScore.fixedToCamera=true;
 			
-			textLives = game.add.text(10,27,"LIVES : " + lives, livesStyle);
+			textLives = game.add.text(17,27," x " + lives, livesStyle);
 			textLives.fixedToCamera = true;
 				
 		}
