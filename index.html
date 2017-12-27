@@ -47,14 +47,19 @@ body {
 			this.load.tilemap('level', 'assets/finalmap.json', null, Phaser.Tilemap.TILED_JSON);
 			this.load.audio('kling','audio/coin.wav');
 			this.load.audio('jump','audio/jump.wav');
-			this.load.image('boom', 'assets/explosion.png',64,64);
+			this.load.spritesheet('kaboom', 'assets/explosion.png',64,64,16);
 		}
 
 		function create() {
 			kling = game.add.audio('kling');
 			jumpSound = game.add.audio('jump');	
 		        explosions = game.add.group();
-  		        explosions.createMultiple(30, 'kaboom');
+			  for (var i = 0; i < 10; i++)
+			    {
+				var explosionAnimation = explosions.create(0, 0, 'kaboom', [0], false);
+				explosionAnimation.anchor.setTo(0.5, 0.5);
+				explosionAnimation.animations.add('kaboom');
+			    }
 			
 			isDead = false;
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -100,12 +105,9 @@ body {
 			player.body.collideWorldBounds = true;
 			player.animations.add('walkRight', [97,98,99,100,101,102,103,104,105,106], 15, true);
 			player.animations.add('walkLeft', [33,34,35,36,37,38,39,40,41,42], 10, true);
-			player.animations.add('explosion',[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],30,true);			
 			player.goesRight = true;
 			player.body.enable=true;
-			
-  			boom = game.add.group();
-			boom.createMultiple(30, 'boom');
+			  			
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
@@ -181,10 +183,11 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() { goomba.kill(); });
 			}			
 			else {					//kill player by goomba.
-				isDead = true;		
-			        var explosion = boom.getFirstExists(false);
- 			        explosion.reset(player.body.x, player.body.y);
-    			        explosion.play('boom', 30, false, true);
+				isDead = true;						    
+				var explosionAnimation = explosions.getFirstExists(false);
+				explosionAnimation.reset(player.x, player.y);
+				explosionAnimation.play('kaboom', 30, false, true);
+				
 				if (lives === 0) {
 					textLives.text = "LIVES : NONE";					
 					death_of_player();					
