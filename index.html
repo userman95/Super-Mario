@@ -57,7 +57,9 @@ body {
 		function create() {
 			//Hearts and Coins icons			
 			var iconCoin = game.add.sprite(10,44,'Coin');
+			iconCoin.fixedToCamera = true;
 			var iconHeart = game.add.sprite(10,27,'heart');
+			iconHeart.fixedToCamera = true;
 			
 			kling = game.add.audio('kling');
 			jumpSound = game.add.audio('jump');	
