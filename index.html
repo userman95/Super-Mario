@@ -24,9 +24,9 @@ body {
 			update : update
 		}, false, false);
 		var scoreCounter = 0;
-	        var scoreStyle = {font : "bold 10pt Arial",fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle"};
+	        var scoreStyle = {font : "bold 10pt Arial",fill: "#000", boundsAlignH: "center", boundsAlignV: "middle"};
 		var livesStyle = {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
-		var timeStyle =  {font : "bold 5pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
+		var coinStyle =  {font : "bold 10pt Arial",fill :"#000" , boundsAlignH: "center", boundsAlignV: "middle"};
 		var currentTime = 0;
 		var lives = 1; 
 		var coinsCounter = 0;		
@@ -127,10 +127,6 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 		
-			//Time starts from now:
-			//currentTime = game.add.text(10,45,"time : " + game.time.now ,timeStyle);
-			//currentTime.fixedToCamera=true;
-			
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
@@ -214,6 +210,8 @@ body {
 			textLives = game.add.text(23,27," x " + lives, livesStyle);
 			textLives.fixedToCamera = true;
 				
+			textCoins = game.add.text(23,44," x " + coinsCounter,coinStyle);
+			textCoins.fixedToCamera = true;
 		}
 		function death_of_player(){
 			var explosionAnimation = explosions.getFirstExists(false);
