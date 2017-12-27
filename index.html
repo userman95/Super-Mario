@@ -48,9 +48,15 @@ body {
 			this.load.audio('kling','audio/coin.wav');
 			this.load.audio('jump','audio/jump.wav');
 			this.load.spritesheet('kaboom', 'assets/explosion.png',64,64,16);
+			this.load.image('Coin','assets/Coin.png',16,16);
+			this.load.image('heart','assets/heart.png',16,16);
 		}
 
 		function create() {
+			//Hearts and Coins icons			
+			var iconCoin = game.add.sprite(200,0,Coin);
+			var iconHeart = game.add.sprite(400,0,heart);
+			
 			kling = game.add.audio('kling');
 			jumpSound = game.add.audio('jump');	
 		        explosions = game.add.group();		
