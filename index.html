@@ -171,9 +171,9 @@ body {
 			kling.play();
 			coinsCounter++;
 			scoreCounter+=10;
-		//	textScore.text = "SCORE : " + scoreCounter ;
-		//	textCoins.text = " x " + coinsCounter;
-			print_status_to_screen();
+			textScore.text = "SCORE : " + scoreCounter ;
+			textCoins.text = " x " + coinsCounter;
+			//print_status_to_screen();
 			if(coinsCounter % 10 == 0){	// every 10 coins gain 1 life
 				lives++;
 				textLives.text = " x " + lives;
@@ -183,8 +183,8 @@ body {
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {	//kill goomba by jumping on it.
 				scoreCounter += 100;
-				//textScore.text = "SCORE : " + scoreCounter ;
-				print_status_to_screen();
+				textScore.text = "SCORE : " + scoreCounter ;
+				//print_status_to_screen();
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
