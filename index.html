@@ -209,9 +209,9 @@ body {
 		}
 		function death_of_player(){
 			var explosionAnimation = explosions.getFirstExists(false);
-				explosionAnimation.reset(player.x, player.y);
-				explosionAnimation.play('kaboom', 30, false, true);
-				
+			explosionAnimation.reset(player.x, player.y);
+			explosionAnimation.play('kaboom', 30, false, true);
+			coinsCounter = 0;
 			player.frame = 6;
 			player.body.velocity.y = -190;
 			player.animations.stop();			
