@@ -32,7 +32,7 @@ body {
 		var coinsCounter = 0;		
 		var isDead = false;
 		var iconCoin ;
-		var iconHeart ;
+		var iconHeart ;		
 		
 		function preload() {
 
@@ -181,6 +181,7 @@ body {
 
 		function goombaOverlap(player, goomba) {
 			if (player.body.touching.down) {	//kill goomba by jumping on it.
+				scoreCounter += 100;
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
