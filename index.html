@@ -260,30 +260,30 @@ body {
 				BlackHoleSpitesheet = game.make.sprite(BlackHole.x, BlackHole.y, 'BlackHole2')							//mushbox.x , mushbox.y-15 is exactly on top of the box
 				BlackHole.addChild(BlackHoleSpitesheet);																//making a mushrooms parent group gets the arcade.collide running.
 				BlackHoleSpitesheet.animations.add('BlackHole2',10,false);									//had we only referenced mushroom here arcade.collide on update wouldnt be able to work
-				BlackHoleSpitesheet.animations.play('BlackHole2);
+				BlackHoleSpitesheet.animations.play('BlackHole2');
 				game.physics.arcade.enable(BlackHole);
-				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
+				game.time.events.add(Phaser.Timer.SECOND *3, game.paused = true);
 			}else if (player.body.touching.right){
 				BlackHoleSpitesheet = game.make.sprite(BlackHole.x, BlackHole.y, 'BlackHole2')							//mushbox.x , mushbox.y-15 is exactly on top of the box
 				BlackHole.addChild(BlackHoleSpitesheet);																//making a mushrooms parent group gets the arcade.collide running.
 				BlackHoleSpitesheet.animations.add('BlackHole2',10,false);									//had we only referenced mushroom here arcade.collide on update wouldnt be able to work
-				BlackHoleSpitesheet.animations.play('BlackHole2);
+				BlackHoleSpitesheet.animations.play('BlackHole2');
 				game.physics.arcade.enable(BlackHole);
-				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
+				game.time.events.add(Phaser.Timer.SECOND *3, game.paused = true);
 			}else if (player.body.touching.left){
 				BlackHoleSpitesheet = game.make.sprite(BlackHole.x, BlackHole.y, 'BlackHole2')							//mushbox.x , mushbox.y-15 is exactly on top of the box
 				BlackHole.addChild(BlackHoleSpitesheet);																//making a mushrooms parent group gets the arcade.collide running.
 				BlackHoleSpitesheet.animations.add('BlackHole2',10,false);									//had we only referenced mushroom here arcade.collide on update wouldnt be able to work
-				BlackHoleSpitesheet.animations.play('BlackHole2);
+				BlackHoleSpitesheet.animations.play('BlackHole2');
 				game.physics.arcade.enable(BlackHole);
-				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
+				game.time.events.add(Phaser.Timer.SECOND *3, game.paused = true);
 			}else
 				BlackHoleSpitesheet = game.make.sprite(BlackHole.x, BlackHole.y, 'BlackHole2')							//mushbox.x , mushbox.y-15 is exactly on top of the box
 				BlackHole.addChild(BlackHoleSpitesheet);																//making a mushrooms parent group gets the arcade.collide running.
 				BlackHoleSpitesheet.animations.add('BlackHole2',10,false);									//had we only referenced mushroom here arcade.collide on update wouldnt be able to work
-				BlackHoleSpitesheet.animations.play('BlackHole2);
+				BlackHoleSpitesheet.animations.play('BlackHole2');
 				game.physics.arcade.enable(BlackHole);			
-				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
+				game.time.events.add(Phaser.Timer.SECOND*3 , game.paused = true);
 		}
 	
 	</script>
