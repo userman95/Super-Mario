@@ -123,9 +123,9 @@ body {
 			BlackHole.enableBody = true;
 			game.physics.arcade.enable(BlackHole);
 			
-			var BlackHoleSpitesheet = game.add.sprite(1900,game.world.height - 100,'BlackHole2');
+			var BlackHoleSpitesheet = game.add.sprite(1950,game.world.height - 100,'BlackHole2');
 			var BlackAnim = BlackHoleSpitesheet.animations.add('BlackHole2');
-			  			
+			BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);  			
 			game.camera.follow(player);
 
 			cursors = game.input.keyboard.createCursorKeys();
@@ -256,7 +256,7 @@ body {
 			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
-			function BlackHolecollide(player, BlackHole){
+			/*function BlackHolecollide(player, BlackHole){
 			if (player.body.touching.up){
 				BlackHole.visible = false;
 				player.animations.stop();
@@ -277,7 +277,7 @@ body {
 				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
 				end();
-		}
+		}*/
 	
 	</script>
 </body>
