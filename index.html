@@ -258,7 +258,8 @@ body {
 			//game.paused = true; // END OF GAME
 		}
 			function BlackHolecollide(player, BlackHole){
-				game.world.remove('BlackHole');
+				game.paused = true;
+				//game.world.remove('BlackHole');
 			}
 	
 	</script>
