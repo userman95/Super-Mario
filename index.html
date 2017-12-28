@@ -123,7 +123,7 @@ body {
 			BlackHole.enableBody = true;
 			game.physics.arcade.enable(BlackHole);
 			
-			var BlackHoleSpitesheet = game.add.sprite(45,game.world.height - 100,'BlackHole2');
+			var BlackHoleSpitesheet = game.add.sprite(1950,game.world.height - 100,'BlackHole2');
 			var BlackAnim = BlackHoleSpitesheet.animations.add('BlackHole2');
 			BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);  			
 			game.camera.follow(player);
@@ -196,7 +196,6 @@ body {
 			if (player.body.touching.down) {	//kill goomba by jumping on it.
 				scoreCounter += 100;
 				textScore.text = "SCORE : " + scoreCounter ;
-				//print_status_to_screen();
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
@@ -261,22 +260,22 @@ body {
 				BlackHole.visible = false;
 				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
-				end();
+				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
 			}else if (player.body.touching.right){
 				BlackHole.visible = false;
 				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
-				end();
+				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
 			}else if (player.body.touching.left){				
 				BlackHole.visible = false;
 				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
-				end();
+				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
 			}else
 				BlackHole.visible = false;
 				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
-				end();
+				game.time.events.add(Phaser.Timer.SECOND , game.paused = true);
 		}
 	
 	</script>
