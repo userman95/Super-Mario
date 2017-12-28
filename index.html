@@ -121,8 +121,7 @@ body {
 			
 			BlackHoleSpitesheet = game.add.sprite(45,game.world.height - 100,'BlackHole2');
 			BlackHoleSpitesheet.animations.play('BlackHole2');
-			BlackHoleSpitesheet.enableBody = true;
-			game.physics.arcade.enable(BlackHoleSpitesheet);
+		
 			
 			game.camera.follow(player);
 
@@ -136,7 +135,7 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.collide(player,BlackHoleSpitesheet, BlackHolecollide);
+		//	game.physics.arcade.collide(player,BlackHoleSpitesheet, BlackHolecollide);
 
 		
 			if (player.body.enable) {
