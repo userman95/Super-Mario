@@ -241,7 +241,7 @@ body {
 
 			game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
 			//TEST
-			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#FF0000'});
+			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#000'});
 			death.x = game.camera.x + game.camera.width/2 - death.width/2;
 			death.y = game.camera.y + game.camera.height/2 - death.height/2;
 			res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
@@ -255,6 +255,17 @@ body {
 			//game.paused = true; // END OF GAME
 		}
 			function BlackHolecollide(player, BlackHoleSpitesheet){
+			death = game.add.text(16, 30,'GAME OVER', { font: '12px', fill : '#000'});
+			death.x = game.camera.x + game.camera.width/2 - death.width/2;
+			death.y = game.camera.y + game.camera.height/2 - death.height/2;
+			res = game.add.text(16,30,'Press space to restart',{ fontSize: '8px',fill:'#000'});
+			res.x = game.camera.x + game.camera.width/2 - res.width/2;
+			res.y = death.y + 15;
+			
+			var spaceb = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR); 
+			scoreCounter = 0;
+			//isDead = false;
+			spaceb.onDown.add(function(){game.state.restart(); });	
 				game.paused = true;
 			}
 	
