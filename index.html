@@ -122,6 +122,9 @@ body {
 			BlackHole = game.add.group(); 
 			BlackHole.enableBody = true;
 			game.physics.arcade.enable(BlackHole);
+			
+			var BlackHoleSpitesheet = game.add.sprite(1900,game.world.height - 100,'BlackHole');
+			var BlackAnim = BlackHoleSpitesheet.animations.add('BlackHole');
 			  			
 			game.camera.follow(player);
 
@@ -256,16 +259,19 @@ body {
 			function BlackHolecollide(player, BlackHole){
 			if (player.body.touching.up){
 				BlackHole.body.enable = false;
+				BlackHoleSpitesheet.animations.play('BlackHole', 30, true);
 				end();
 			}else if (player.body.touching.right){
-				BlackHole.body.enable = false;
+				BlackHole.visible = false;
+				BlackHoleSpitesheet.animations.play('BlackHole', 30, true);
 				end();
-			}else if (player.body.touching.left){
-				
-				BlackHole.body.enable = false;
+			}else if (player.body.touching.left){				
+				BlackHole.visible = false;
+				BlackHoleSpitesheet.animations.play('BlackHole', 30, true);
 				end();
 			}else
-				BlackHole.body.enable = false;
+				BlackHole.visible = false;
+				BlackHoleSpitesheet.animations.play('BlackHole', 30, true);
 				end();
 		}
 	
