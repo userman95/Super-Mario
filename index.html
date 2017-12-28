@@ -58,9 +58,6 @@ body {
 
 		function create() {
 			//Hearts and Coins icons	
-			var coinsCounter = 0;
-			var scoreCounter = 0;
-			var lives = 1;
 			var iconCoin = game.add.sprite(10,44,'Coin');
 			iconCoin.fixedToCamera = true;
 			var iconHeart = game.add.sprite(10,27,'heart');
@@ -140,7 +137,7 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.collide(player,BlackHoleSpitesheet, BlackHolecollide);
+			game.physics.arcade.collide(player,BlackHoleSpitesheet, death_of_player);
 
 		
 			if (player.body.enable) {
@@ -257,9 +254,7 @@ body {
 			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
-			function BlackHolecollide(player, BlackHoleSpitesheet){
-				death_of_player();				
-			}
+			
 	
 	</script>
 </body>
