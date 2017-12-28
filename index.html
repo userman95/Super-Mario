@@ -57,7 +57,10 @@ body {
 		}
 
 		function create() {
-			//Hearts and Coins icons			
+			//Hearts and Coins icons	
+			var coinsCounter = 0;
+			var scoreCounter = 0;
+			var lives = 1;
 			var iconCoin = game.add.sprite(10,44,'Coin');
 			iconCoin.fixedToCamera = true;
 			var iconHeart = game.add.sprite(10,27,'heart');
@@ -255,10 +258,7 @@ body {
 			//game.paused = true; // END OF GAME
 		}
 			function BlackHolecollide(player, BlackHoleSpitesheet){
-				death_of_player();
-				coinsCounter = 0;
-				scoreCounter = 0;
-				lives = 1;
+				death_of_player();				
 			}
 	
 	</script>
