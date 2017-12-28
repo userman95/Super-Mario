@@ -258,19 +258,23 @@ body {
 		}
 			function BlackHolecollide(player, BlackHole){
 			if (player.body.touching.up){
-				BlackHole.body.enable = false;
+				BlackHole.visible = false;
+				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
 				end();
 			}else if (player.body.touching.right){
 				BlackHole.visible = false;
+				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
 				end();
 			}else if (player.body.touching.left){				
 				BlackHole.visible = false;
+				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
 				end();
 			}else
 				BlackHole.visible = false;
+				player.animations.stop();
 				BlackHoleSpitesheet.animations.play('BlackHole2', 30, true);
 				end();
 		}
