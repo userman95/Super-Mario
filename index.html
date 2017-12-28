@@ -118,14 +118,10 @@ body {
 			player.goesRight = true;
 			player.body.enable=true;
 			
-			BlackHole = game.add.sprite(45, game.world.height - 100,'BlackHole');
-			BlackHole.enableBody = true;
-			game.physics.arcade.enable(BlackHole);
 			
-			/*BlackHoleSpitesheet = game.add.sprite(1950,game.world.height - 100,'BlackHole2');
-			BlackHoleSpitesheet = game.add.group(); 
+			BlackHoleSpitesheet = game.add.sprite(45,game.world.height - 100,'BlackHole2');
 			BlackHoleSpitesheet.enableBody = true;
-			game.physics.arcade.enable(BlackHoleSpitesheet);*/
+			game.physics.arcade.enable(BlackHoleSpitesheet);
 			
 			game.camera.follow(player);
 
@@ -139,7 +135,7 @@ body {
 			game.physics.arcade.collide(goombas, layer);
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
-			game.physics.arcade.collide(player,BlackHole, BlackHolecollide);
+			game.physics.arcade.collide(player,BlackHoleSpitesheet, BlackHolecollide);
 
 		
 			if (player.body.enable) {
@@ -175,7 +171,7 @@ body {
 				if (player.body.velocity.y != 0 && isDead === true) {
 					player.frame = 6;	
 				}
-		
+			
 			}
 		}
 
@@ -256,9 +252,8 @@ body {
 			spaceb.onDown.add(function(){game.state.restart(); });			
 			//game.paused = true; // END OF GAME
 		}
-			function BlackHolecollide(player, BlackHole){
-				game.paused = true;
-				//game.world.remove('BlackHole');
+			function BlackHolecollide(player, BlackHoleSpitesheet){
+				game.time.events.add(Phaser.Timer.SECOND*2 , game.paused = true);
 			}
 	
 	</script>
