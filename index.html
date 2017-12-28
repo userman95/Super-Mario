@@ -120,9 +120,8 @@ body {
 			
 			
 			BlackHoleSpitesheet = game.add.sprite(80,game.world.height - 100,'BlackHole2');
-			Black = BlackHoleSpitesheet.animations.add('BlackHole2 ');
-			
-			BlackHoleSpitesheet.animations.play('BlackHole2');
+			Black = BlackHoleSpitesheet.animations.add('Black');			
+			BlackHoleSpitesheet.animations.play('Black',30,true);
 		
 			
 			game.camera.follow(player);
