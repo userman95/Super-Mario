@@ -236,6 +236,7 @@ body {
 			explosionAnimation.play('kaboom', 30, false, true);
 			coinsCounter = 0;
 			player.frame = 6;
+			player.body.velocity.y = -190;
 			player.animations.stop();			
 
 			game.time.events.add(Phaser.Timer.SECOND , function() {	player.body.enable = false; });
