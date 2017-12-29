@@ -97,7 +97,7 @@ body {
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
 			
-			flame = game.add.sprite(1000, game.world.height - 100,'heart');
+			flame = game.add.sprite(1000, game.world.height - 100,'flame');
 			flame = game.add.group(); 
 			flame.enableBody = true;
 			game.physics.arcade.enable(flame);
@@ -182,7 +182,7 @@ body {
 			
 			}
 		}
-		function flameCollide(){
+		function flameCollide(player,flame){
 			flame.kill();
 			flame.body.enable = false;
 			player.reset(1500,-200);
