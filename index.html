@@ -54,6 +54,7 @@ body {
 			this.load.image('heart','assets/heart.png',16,16);
 			this.load.spritesheet('BlackHole2','assets/BlackHole2 .png',64,64);
 			this.load.image('BlackHole','assets/BlackHole.png',100,81);
+			this.load.image('flame','assets/flame.png',16,16);
 		}
 
 		function create() {
@@ -95,6 +96,11 @@ body {
 			coins.callAll('animations.add', 'animations', 'spin',
 					[ 0, 0, 1, 2 ], 3, true);
 			coins.callAll('animations.play', 'animations', 'spin');
+			
+			flame = game.add.sprite(1000, game.world.height - 100,'heart');
+			flame = game.add.group(); 
+			flame.enableBody = true;
+			game.physics.arcade.enable(flame);
 
 			goombas = game.add.group();
 			goombas.enableBody = true;
@@ -138,7 +144,7 @@ body {
 			game.physics.arcade.overlap(player, goombas, goombaOverlap);
 			game.physics.arcade.overlap(player, coins, coinOverlap);
 			game.physics.arcade.collide(player,BlackHoleSpitesheet, death_of_player);
-
+			game.physics.arcade.collide(player,flame,flameCollide);
 		
 			if (player.body.enable) {
 				player.body.velocity.x = 0;
@@ -175,6 +181,11 @@ body {
 				}
 			
 			}
+		}
+		function flameCollide(){
+			flame.kill();
+			flame.body.enable = false;
+			player.reset(1500,-200);
 		}
 
 		function coinOverlap(player, coin) {
