@@ -104,7 +104,7 @@ body {
 
 			skeletons = game.add.group();
 			skeletons.enableBody = true;
-			map.createFromTiles(1, null, 'goomba', 'stuff', skeletons);
+			map.createFromTiles(1, null, 'skeleton', 'stuff', skeletons);
 			skeletons.callAll('animations.add', 'animations', 'walk', [ 0, 1 ,2,3,4,5,6,7],
 					7, true);
 			skeletons.callAll('animations.play', 'animations', 'walk');
